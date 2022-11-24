@@ -1,0 +1,847 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+%\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{afterpage}
+\usepackage{physics}
+\usepackage{siunitx}[=v2]
+\usepackage{nicefrac}
+\usepackage{blindtext}
+
+\usepackage{cuted}
+\usepackage{flushend}
+\usepackage{subcaption}
+
+\usepackage{appendixnumberbeamer}
+
+%\colorlet{rorange}{orange!70!black}
+\definecolor{rorange}{RGB}{223,107,85}
+\definecolor{rblue}{RGB}{114,177,236}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[onehalfspacing]{setspace}
+%\usepackage[superscript,biblabel]{cite}
+%\makeatletter \renewcommand{\@citess}[1]{\textsuperscript{\,[#1]}} \makeatother
+
+%\usepackage[sfdefault]{atkinson} %% Option 'sfdefault' if the base
+%% font of the document is to be sans serif.
+\usepackage[T1]{fontenc}
+
+% ##################################################
+% BIBLIOGRAPHY
+% ##################################################
+\usepackage{csquotes}
+\usepackage[backend=biber,bibstyle=ieee, citestyle=numeric-comp]{biblatex}
+\addbibresource{./BA.bib}
+\addbibresource{SHIP-proposal.bib}
+\addbibresource{ZINTH.bib}
+\addbibresource{SPECTRAL-SEMICONDUCTOR.bib}
+\setlength\bibitemsep{.5\baselineskip}
+\setcounter{biburlnumpenalty}{9000} % break URLs on numbers
+\setcounter{biburllcpenalty}{9000}  % break URLs on lower case letters
+\setcounter{biburlucpenalty}{9000}  % break URLs on upper case letters
+
+
+
+\usetheme{Darmstadt}
+\usecolortheme{dove}
+
+\DeclareSIUnit\eVperc{\eV\per\clight\squared}
+\DeclareSIUnit\clight{\text{\ensuremath{c}}}
+
+%\usepackage{caption}
+%\captionsetup[figure]{font=footnotesize}
+\setbeamertemplate{caption}{\insertcaption} 
+\setbeamerfont{caption}{family=\sffamily, size={\fontsize{6}{6}}}
+\setbeamercolor{caption}{fg=gray}
+\setbeamercolor{caption name}{fg=gray}
+
+\title{\textbf{Position-dependent detector response of a liquid scintillation detector instrumented with wavelength-shifting optical modules and SiPMs using cosmic muons}}
+\author{Andrea Ernst}
+\institute{Humboldt-Universität zu Berlin \\ \vspace{.3cm} on behalf of the SBT collaboration \\ \vspace{.3cm} for the DPG Spring Meeting, T 42.4}
+
+\date{22. March 2022}
+
+\usepackage{tikz}
+\titlegraphic { 
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[left=0.5cm] at (current page.340){
+			\includegraphics[width=1.5cm]{new_alex/humboldt_logo.png}
+		};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[left=2.5cm] at (current page.340){
+			\includegraphics[width=1.5cm]{pictures/SHiP-Acronym_Black.png}
+		};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[right=0.5cm] at (current page.200){
+			\includegraphics[width=4.5cm]{pictures/dfg_logo_schriftzug_blau_foerderung_en.jpg}
+		};
+	\end{tikzpicture}
+}
+\setbeamertemplate{itemize items}{--}
+\setbeamercolor{itemize item}{fg=rorange}
+\setbeamertemplate{enumerate items}[default]
+\setbeamercolor{enumerate items}{fg=rorange}
+
+\captionsetup{labelformat=empty,labelsep=none}
+
+\setbeamertemplate{section in toc}{%
+	{\color{rorange}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{\color{rorange}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{bibliography entry article}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+\setbeamerfont{bibliography item}{size={\fontsize{6}{6}}}
+\setbeamerfont{bibliography entry author}{size={\fontsize{6}{6}}}
+\setbeamerfont{bibliography entry title}{size={\fontsize{6}{6}}}
+\setbeamerfont{bibliography entry location}{size={\fontsize{6}{6}}}
+\setbeamerfont{bibliography entry note}{size={\fontsize{6}{6}}}
+
+\setbeamertemplate{footline}{%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}{\color{gray}\insertshortauthor~~}%(\insertshortinstitute)
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+			\usebeamerfont{title in head/foot} 
+			\color{gray}\insertframenumber/\inserttotalframenumber{} \hspace*{2ex}
+		\end{beamercolorbox}%
+		%\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+		%\insertframenumber{} \hspace*{2ex}
+		%\end{beamercolorbox}
+	}%
+	\vskip0pt%
+}
+
+\begin{document}
+	
+	\begin{frame}[plain]
+		\maketitle 
+%		\begin{figure}
+%			\includegraphics[width=50pt]{new_alex/humboldt_logo.png}
+%		\end{figure}
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Overview}
+		\tableofcontents
+	\end{frame}
+	
+	%------- SHiP -------%
+	\section[SHiP SBT]{SHiP Surround Background Tagger (SBT)}
+	
+	
+	
+	
+	
+	\begin{frame}{Search for Hidden Particles (SHiP)}
+		\vspace{-.5cm}
+		\begin{figure}
+			\centering
+			\includegraphics[width=.8\textwidth]{pictures/ship-facility.pdf}
+			\caption{Cr.: SHiP Collaboration \cite{SHIP-DESIGN-2019}.}
+		\end{figure}
+		
+		
+		
+		\begin{itemize}
+			\item 'intensity frontier' experiment proposed at CERN SPS
+			%\item \SI{400}{\giga\electronvolt} proton beam-dump
+			\item looking for long-lived exotic particles, $m < \order{10}\SI{}{\giga\eVperc}$
+			\item decay volume surrounded by liquid scintillator SBT
+%			\item need precise background suppression 
+		\end{itemize}
+	\end{frame}
+
+
+%	\begin{frame}{}
+	
+%	\begin{figure}
+%		\centering
+%		\includegraphics[width=.8\textwidth]{pictures/ship-facility.pdf}
+%		\caption{Cr.: SHiP Collaboration \cite{SHIP-DESIGN-2019}.}
+%	\end{figure}
+%	
+%	
+%	
+%	\begin{itemize}
+%		%\item target $\rightarrow$ muon shield $\rightarrow$ Scattering and Neutrino Detector
+%		%\item decay volume $\rightarrow$ Hidden Sector decay spectrometer
+%		%\item intensity frontier $\Rightarrow$ need precise background suppression 
+%		
+%	\end{itemize}
+%\end{frame}
+
+
+
+	
+	\begin{frame}{Surround Background Tagger (SBT)}
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=.7\textwidth]{pictures/decay_volume.pdf}
+			\caption{Cr.: Miano et al \cite{MIANO}.}
+		\end{figure}
+	\vspace{-.5cm}
+		\begin{itemize}
+%			\item structure surrounds evacuated decay vessel
+			\item requirements: 
+				\begin{itemize}
+					\item full coverage of surrounding area
+					\item high detection efficiency for charged particles (muons) entering decay vessel \& deep inelastic scattering events induced by $\nu$ and $\mu$ from beam dump target
+				\end{itemize}
+			$\Rightarrow$ liquid scintillator (LS): LAB + PPO (\SI{2}{\gram\per\liter})
+			\item SBT made up of $\order{2000}$ detector 'cells'
+			%% structural stiffness necessitates cells
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	
+	%------- SBT cell prototype -------%
+	\section{Liquid Scintillator SBT}
+	
+	
+	
+	
+	%------- WOM -------%
+	
+	\begin{frame}{Wavelength-shifting Optical Module (WOM)}
+		\vspace{-1cm}
+		
+		\begin{columns}
+			
+			\begin{column}{0.4\textwidth}
+				\begin{itemize}
+					\item LS UV light enters PMMA tube $\rightarrow$ wavelength-shifted $\rightarrow$ travels via total reflection
+%					\item pro: high surface area $\rightarrow$ gathers a lot of light from LS
+					\item WOM light-guide $\rightarrow$ detection area of WOM $>>$ just SiPMs
+					\item path of light to end of tube can be arbitrarily complex
+				\end{itemize}
+				
+			\end{column}
+			
+			
+			\begin{column}{0.7\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=.9\textwidth]{pictures/wom-principle.pdf}
+					\caption{Adapted from \cite{ZIMMERMANN}.}
+				\end{figure}
+				
+			\end{column}
+			
+		\end{columns}
+		
+		
+	\end{frame}
+	
+	
+	
+%	\begin{frame}{Wavelength-shifting Optical Module (WOM)}
+%		\begin{columns}
+%			\begin{column}{0.5\textwidth}
+%				\begin{figure}
+%					\centering
+%					\includegraphics[width=\textwidth]{pictures/absorption-emission.pdf}
+%					\caption{Adapted from \cite{ZIMMERMANN}.}
+%				\end{figure}
+%				
+%			\end{column}
+%			
+%			\begin{column}{0.5\textwidth}
+%				\begin{itemize}
+%					\item emission maximum of LS around 350 to \SI{400}{\nano\meter}
+%					\item use wavelength-shifting paint on WOM $\rightarrow$ paint absorbs LS photons, re-emits in visible spectrum
+%				\end{itemize}
+%				
+%			\end{column}
+%		\end{columns}
+%	\end{frame}
+
+
+	
+	
+	\begin{frame}{Electronics}
+		\vspace{-1cm}
+		\begin{columns}
+			
+%			\begin{column}{0.4\textwidth}
+%				\begin{figure}
+%					\centering
+%					\includegraphics[width=.8\textwidth]{pictures/WOM_Vessel_TB18_top.jpeg}
+%				\end{figure}
+%			\end{column}
+			
+			
+			
+			\begin{column}{0.8\textwidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=.6\textwidth]{pictures/sipm-array.pdf}
+				\end{figure}
+			
+				\begin{itemize}
+					\item WOM optically coupled to circular array of 40 SiPMs
+					\item SiPMs mounted on PCB, PCB connected to eMUSIC board \\ $\rightarrow$ 40 signals gathered in 8 analog channels à 5 SiPMs
+					\item eMUSIC board connected to WaveCatcher (A-to-D converter)
+				\end{itemize}
+			
+			\end{column}
+			
+			
+			
+			
+			
+		\end{columns}
+	
+	\end{frame}
+	
+	
+	
+	\section[Spatial resolution]{Spatial resolution studies with a small-scale SBT cell prototype}
+	
+	
+	\begin{frame}{SBT Cell Prototype}
+		\begin{columns}
+			
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item WOM and LS contained in $\SI{50.4 x 50.4 x 25}{\centi\meter}$ steel box
+					\item SiPM array and electronics covered to prevent light leakage
+					\item two sets of plastic scintillators + PMTs used to trigger on cosmic muons
+				\end{itemize}
+			\end{column}
+		
+			\begin{column}{0.5\textwidth}
+					\begin{figure}
+						\centering
+						\includegraphics[width=\textwidth]{pictures/cosmics-photo.pdf}
+					\end{figure}
+			\end{column}
+			
+			
+			
+			
+			
+		\end{columns}
+	\end{frame}
+
+
+
+	\begin{frame}{Position-dependent Detector Response}
+		\centering
+		
+		\includegraphics[width=.8\textwidth]{pictures/cosmics.pdf}
+		
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[width=1\textwidth]{pictures/detector-response.pdf}	
+			\end{column}
+		
+			\begin{column}{.5\textwidth}
+				\begin{itemize}
+					\item muon generates scintillation light in LS box
+					\item light gets collected, shifted by WOM $\rightarrow$ travels to SiPM array
+					\item goal: study signal in 8 SiPM groups as function of muon incidence location
+				\end{itemize}
+			\end{column}
+		
+		\end{columns}
+	
+	\end{frame}
+
+	
+	
+	
+
+
+	
+	\begin{frame}{SiPM Signal}
+		\vspace{-1cm}
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[width=1\textwidth]{pictures/integration-window.pdf}
+			
+				Light yield:
+				\begin{equation*}
+					J = \int_{\Delta t} U(t) \,dt
+				\end{equation*}
+				
+			\end{column}
+		
+			\begin{column}{.5\textwidth}
+				\centering
+				
+				\includegraphics[width=.6\textwidth]{pictures/waveform-sipm.pdf}
+				\begin{itemize}
+					\item WaveCatcher records \SI{320}{\nano\second} voltage waveform per event and SiPM group
+					\item 'main signal' integrated using ROOT-based software \cite{ROOTREADER} $\rightarrow$ light yield measure for amount of light collected per group
+				\end{itemize}
+			\end{column}
+		
+		\end{columns}
+		
+	\end{frame}
+
+	\begin{frame}{Muon Incidence Location}
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[width=.7\textwidth]{pictures/positional.pdf}
+				\includegraphics[width=.5\textwidth]{pictures/locations_cosmics.pdf}
+			\end{column}
+		
+		
+			\begin{column}{.5\textwidth}
+				\begin{itemize}
+					\item muon location can be determined using speed of light inside plastic scintillators $c_{PS}$
+				\end{itemize}
+			\begin{equation*}
+				X_{bot} =  \frac{1}{2} \cdot c_{PS} \cdot (t_4 - t_3) = \frac{1}{2} \cdot c_{PS} \cdot \Delta t_{43}
+			\end{equation*}
+		
+			\begin{itemize}
+				\item same for $X_{top}$ $\rightarrow$ can filter $\Delta t$ to set location
+				\item compare detector signals for 8 + 1 positions
+				\item use C-0 to determine non-uniformity of signal transmission
+			\end{itemize}
+		
+		
+			\end{column}
+		\end{columns}
+
+	\end{frame}
+
+
+	\begin{frame}{Event-dependent Mean Angle $\phi_{ew}$}
+		\begin{columns}
+			
+		
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[width=.45\textwidth]{pictures/phi_channel.pdf}
+				
+				
+				\begin{gather}
+					\begin{align*}
+						x_{i}& = \frac{1}{N} \cos(\varphi_i) \cdot \frac{{J_i}}{ \overline{J_i^{C0}}} 
+						& y_{i} &=\frac{1}{N} \sin(\varphi_i) \cdot \frac{{J_i}}{ \overline{J_i^{C0}}} \\					 
+					\end{align*}
+				\end{gather}
+			\vspace{-1cm}
+			\begin{align*}
+				\overline{J_i^{C0}} = \frac{J_i^{\text{C0, av.}}}{\frac{1}{8}\sum_{k=0}^{7} J_k^{\text{C0, av.}}}
+				%normalised average light yield
+			\end{align*}	
+				
+				
+			\end{column}
+		
+			\begin{column}{.5\textwidth}
+				\vspace{-1cm}
+				\begin{itemize}
+					\item assign angle $\varphi_{i}$ to each group i
+					\item average all angles $\varphi_{i}$ weighted by normalised light yield in respective group $J_i$ $\rightarrow$ use vectorial addition
+				\end{itemize}
+			\vspace{-.4cm}
+			\begin{gather}
+				\begin{align*}
+					%						\label{eq:phiew}
+					X  &= \sum_{i=0}^{7} x_{i}
+					& Y &= \sum_{i=0}^{7} y_{i}\\	
+					%						\overline{J_i} &= \frac{J_i}{\sum_{k=0}^{7} J_k^{\text{ same ev.}}} 
+%					\phi_{ew} &=      \arctan\qty(\frac{Y}{X})											
+				\end{align*}
+			\end{gather}
+		\vspace{-1cm}
+				\begin{itemize}
+					\item correct for non-uniformity using C-0
+					\item convert averaged vector back to polar angle $\phi_{ew}$, project on $\left[-\ang{180},\ang{180}\right]$ interval
+				\end{itemize}
+%				\vspace{-.1cm}	
+					\begin{align*}
+%						\label{eq:phiew}
+%						X  &= \sum_{i=0}^{7} x_{i}
+%						& Y &= \sum_{i=0}^{7} y_{i}\\	
+%						\overline{J_i} &= \frac{J_i}{\sum_{k=0}^{7} J_k^{\text{ same ev.}}} 
+						 \phi_{ew} &=      \arctan\qty(\frac{Y}{X})											
+					\end{align*}
+			
+				
+				
+			\end{column}
+		
+		\end{columns}
+	\end{frame}
+	
+		\begin{frame}{Central Position C-0}
+		\begin{columns}
+			\begin{column}{0,5\textwidth}
+				\centering
+				\begin{itemize}
+					\item with ideal optical coupling between WOM and SiPMs, expect uniform $\phi_{ew}$ distribution for C-0 $\rightarrow$ it is not
+				\end{itemize}
+			\end{column}
+			\begin{column}{0,5\textwidth}
+				\begin{figure}
+					\includegraphics[width=\textwidth]{new_alex/C0_normalised_phi_ew_all.pdf}
+				\end{figure}
+				
+			\end{column}
+		\end{columns}
+%		$\rightarrow$ not uniform! values distributed around ch. 0 \linebreak
+		$\Rightarrow$ optical coupling and/or SiPM efficiency not uniform
+		$\rightarrow$ use to normalise wrt. light yield
+	\end{frame}
+	
+	
+	\begin{frame}{Position-dependent Mean angle $\overline{\Phi_{ew}}$}
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[width=1.0\textwidth]{new_alex/R0_corrected_phi_ew_all.pdf}
+%%				\centering
+%				
+%				\includegraphics[width=1.1\textwidth]{new_alex/C0_normalised_phi_ew_all.pdf}
+%				\begin{itemize}
+%					\item would expect C0 to be uniform - it is not
+%					$\rightarrow$ use to normalise wrt. light yield
+%				\end{itemize}
+%				
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\centering
+				\begin{itemize}
+					\item sample corrected $\phi_{ew}$ distribution for position R-0
+					\item barring shift of mean, similar for all positions
+					\item fit Gaussian to determine position-dependent mean angle
+					 $\overline{\Phi_{ew}}$
+					 \item single Gaussian would require knowing mean (periodicity) 
+					 $\rightarrow$ fit 3 Gaussians over ($\ang{0}, \pm \ang{360}$) shifted values
+				\end{itemize}
+				
+				
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+%	\begin{frame}
+%		\begin{align}
+%			x_i= \frac{1}{N} cos(\phi) \cdot \frac{J_i}{ \overline{J_i^{C0}}} 
+%		\end{align}
+%	\end{frame}
+
+
+	\section{Results}
+
+	
+	\begin{frame}{Position-dependent Mean angle $\overline{\Phi_{ew}}$}
+		\begin{columns}
+			
+			\begin{column}{0.4\textwidth}
+				\centering
+				\includegraphics[width=.7\textwidth]{pictures/relative-locations.pdf}
+				\begin{itemize}
+					\item assign angle $\alpha$ to each muon incidence location
+					\item $\alpha \in \left[-\ang{180},\ang{180}\right]$, so that $\alpha = 0$ corresponds to corner of box
+				\end{itemize}
+			\end{column}
+		
+			\begin{column}{0.6\textwidth}
+				\includegraphics[width=\textwidth]{./new_alex/phi_ew_alpha.pdf}
+			\end{column}
+		
+		\end{columns}
+	
+	
+	\end{frame}
+
+	\begin{frame}{Conclusion}
+		\vspace{-.7cm}
+		\begin{columns}
+			
+%			\begin{column}{0.5\textwidth}
+%				\centering
+%				\begin{figure}
+%				\caption{Cr.: Joscha Hanel \cite{HANEL}.}
+%				\vspace{-.2cm}
+%				\includegraphics[width=.9\textwidth]{pictures/hanel_phi-ew.pdf}
+%				\includegraphics[width=.9\textwidth]{pictures/hanel_phi-std.pdf}
+%				\end{figure}
+%			\vspace{-.2cm}
+%				\begin{itemize}
+%					\item $\Delta \phi_{beam} = \ang{90} \rightarrow \Delta \overline{\Phi_{ew}} = \ang{45}$
+%				\end{itemize}
+%				
+%			\end{column}
+			
+			\begin{column}{0.9\textwidth}
+				\centering
+%				\vspace{-.5cm}
+				\includegraphics[width=.6\textwidth]{./new_alex/confidence_phi.pdf}
+				
+				\begin{itemize}
+					\centering 
+					\item For single event, can assign $\approx\ang{100}$ region at $1\sigma$ CL
+				\end{itemize}
+						
+			\end{column}
+				
+			
+		\end{columns}
+	\vspace{.3cm}
+			\centering
+		We can determine the location of the primary light-source, i.e. the muon incidence, to a region of around $\ang{100}$ (at $1\sigma$ CL).
+	
+		\centering
+		
+%	Standard deviations similar for both, $\overline{\Phi_{ew}}$ overlap with standard deviations
+		
+	\end{frame}
+
+
+	
+	\appendix
+	
+	
+	% --- Outlook ----
+%	\section{Summary and Outlook}
+%	
+%	\begin{frame}
+%		\begin{columns}
+%			\begin{column}{.5\textwidth}
+%				\textit{can} resolve muon incidence position from SiPM signal to about $\ang{90}$ for many events
+%			\end{column}
+%			\begin{column}{.5\textwidth}
+%				$\rightarrow$ can \textit{not} determine position of individual event solely from SiPM signal with certainty \linebreak
+%				$\rightarrow$ need to improve (understanding of) detector
+%			\end{column}
+%		\end{columns}
+%	\vspace{1cm}
+%	\centering
+%	Next steps:
+%		\begin{itemize}
+%			\item optical coupling between WOM and SiPM array has great influence on signals \\
+%			$\rightarrow$ study central position e.g. with external source
+%			\item make analysis independent of number of detected photons \\
+%			$\rightarrow$ normalise light yield $\overline{J_i} = \frac{J_i}{\sum_{k=0}^{7} J_k}$
+%			\item increase concentration of muons per position \\
+%			$\rightarrow$ position determination limited by plastic scintillators' time resolution \\
+%			$\rightarrow$ low rate of muons necessitates long measurement runs
+%		\end{itemize}
+%	\end{frame}
+	
+	
+
+	
+	%------- References -------%
+%	\begin{singlespace}
+		\printbibliography
+%	\end{singlespace}
+	 
+	
+	
+%% backup
+
+\newpage
+	\section*{Backup}
+
+%\begin{frame}{Scintillation Detection}
+%	
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{itemize}
+%				\item organic scintillators have delocalised electrons
+%				\item electron in ground state $S_0$ can absorb photon $\rightarrow$ excitation
+%				\item excited states $S_{1,2}$ not stable $\rightarrow$ radiationless transitions ($S_2 \rightarrow S_1$), de-excitation via photon emission ($S_1 \rightarrow S_0$) $\rightarrow$ fluorescence
+%			\end{itemize}
+%		\end{column}
+%		
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\centering
+%				\includegraphics[width=\textwidth]{pictures/jablonski.pdf}
+%				\caption{Based on \cite{SCINTILLATION-TORRES}.}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%	
+%\end{frame}
+
+%\begin{frame}{Scintillation Detection}
+%	
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{itemize}
+%				\item suppressed secondary process: phosphorescence
+%				\item fluorescence $\sim \order{1}\SI{}{\nano\second}$
+%				\item phosphorescence $\sim \order{1}\SI{}{\micro\second}$ \\
+%				
+%			\end{itemize}
+%			$\Rightarrow$ 'efficiency' of scintillator lowered for small time scales
+%		\end{column}
+%		
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\centering
+%				\includegraphics[width=\textwidth]{pictures/jablonski.pdf}
+%				\caption{Based on \cite{SCINTILLATION-TORRES}.}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%	
+%\end{frame}
+%
+%\begin{frame}
+%	\begin{figure}
+%		\includegraphics[width=.7\textwidth]{pictures/photomultiplier.pdf}
+%		\caption{Cr.: Hamamatsu \cite{HAMAMATSU-PMT}.}
+%	\end{figure}
+%\begin{itemize}
+%	\item photoelectrons get multiplied by acceleration and knocking more electrons lose
+%	\item response time mainly from number of multiplications, acceleration time, transit time to anode
+%\end{itemize}
+%\end{frame}
+
+
+	\begin{frame}{Wavelength-shifting Optical Module (WOM)}
+			\begin{columns}
+					\begin{column}{0.5\textwidth}
+							\begin{figure}
+									\centering
+									\includegraphics[width=\textwidth]{pictures/absorption-emission.pdf}
+									\caption{Adapted from \cite{ZIMMERMANN}.}
+								\end{figure}
+							
+						\end{column}
+					
+					\begin{column}{0.5\textwidth}
+							\begin{itemize}
+									\item emission maximum of LS around 350 to \SI{400}{\nano\meter}
+									\item use wavelength-shifting paint on WOM $\rightarrow$ paint absorbs LS photons, re-emits in visible spectrum
+								\end{itemize}
+							
+						\end{column}
+				\end{columns}
+		\end{frame}
+
+
+
+	
+	\begin{frame}
+		\begin{figure}
+			\includegraphics[width=.5\textwidth]{pictures/coverage.pdf}
+		\end{figure}
+	\begin{itemize}
+		\item imperfect coverage of WOM by SiPM array could favour some SiPM groups
+	\end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\centering
+		\begin{figure}
+			\includegraphics[width=.5\textwidth]{pictures/light_yield.pdf}
+		\end{figure}
+	\begin{itemize}
+		\item light-yield from $ \sim \num{65000}$ events in one SiPM group
+	\end{itemize}
+	\end{frame}
+
+
+	\begin{frame}
+		\centering
+		
+		\begin{columns}
+			\begin{column}{0.6\textwidth}
+				\begin{figure}
+					\caption{Cr.: Joscha Hanel \cite{HANEL}.}
+					\vspace{-.2cm}
+					\includegraphics[width=1.\textwidth]{pictures/hanel_phi-ew.pdf}
+					\includegraphics[width=1.\textwidth]{pictures/hanel_phi-std.pdf}
+				\end{figure}
+				\vspace{-.2cm}
+				\begin{itemize}
+					\item $\Delta \phi_{beam} = \ang{90} \rightarrow \Delta \overline{\Phi_{ew}} = \ang{45}$
+				\end{itemize}
+			\end{column}
+		
+			\begin{column}{0.5\textwidth}
+				\centering
+				\includegraphics[width=0.6\textwidth]{pictures/testbeam.pdf}\\
+				Sketch of TestBeam19 setup
+			\end{column}
+		
+		\end{columns}
+								
+	\end{frame}
+	
+	
+	\begin{frame}
+		\centering
+		\includegraphics[width=0.3\textwidth]{pictures/relative-locations_realChannels.pdf} \\
+		WaveCatcher channels' relative locations
+	\end{frame}
+	
+	\begin{frame}
+		\centering
+		\includegraphics[width=0.6\textwidth]{new_alex/phi_ew_alpha_corruncorr.pdf}
+	\end{frame}
+
+
+	\begin{frame}
+		\centering
+		
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}
+					\includegraphics[width=1.\textwidth]{new_alex/radial_corrected.pdf}
+				\end{figure}
+
+
+			\end{column}
+			
+			\begin{column}{0.5\textwidth}
+				\includegraphics[width=1.\textwidth]{new_alex/radial_uncorrected.pdf}
+			\end{column}
+			
+		\end{columns}
+		
+		
+	\end{frame}
+	
+	
+\end{document}

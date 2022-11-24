@@ -1,0 +1,24 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'main.blg'
+[158] biber-MSWIN64:340> INFO - === 
+[221] Biber.pm:415> INFO - Reading 'main.bcf'
+[386] Biber.pm:952> INFO - Found 27 citekeys in bib section 0
+[405] Biber.pm:4340> INFO - Processing section 0
+[421] Biber.pm:4531> INFO - Looking for bibtex format file './BA.bib' for section 0
+[516] bibtex.pm:1689> INFO - LaTeX decoding ...
+[586] bibtex.pm:1494> INFO - Found BibTeX data source './BA.bib'
+[837] Biber.pm:4531> INFO - Looking for bibtex format file 'SHIP-proposal.bib' for section 0
+[907] bibtex.pm:1689> INFO - LaTeX decoding ...
+[922] bibtex.pm:1494> INFO - Found BibTeX data source 'SHIP-proposal.bib'
+[1216] Biber.pm:4531> INFO - Looking for bibtex format file 'ZINTH.bib' for section 0
+[1300] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1307] bibtex.pm:1494> INFO - Found BibTeX data source 'ZINTH.bib'
+[1337] Biber.pm:4531> INFO - Looking for bibtex format file 'SPECTRAL-SEMICONDUCTOR.bib' for section 0
+[1414] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1421] bibtex.pm:1494> INFO - Found BibTeX data source 'SPECTRAL-SEMICONDUCTOR.bib'
+[1482] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1482] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1482] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[1482] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-GB'
+[1530] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1869] bbl.pm:757> INFO - Output to main.bbl

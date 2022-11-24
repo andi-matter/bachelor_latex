@@ -1,0 +1,62 @@
+\documentclass[oneside,
+    fontsize=12pt,          % default font size 12pt
+    paper=a4,               % DIN A4 page format
+    numbers=noenddot,       % remove dots behind chapter numbers (e.g. 1.5 not 1.5.)
+%    listof=totoc,           % add list of figures, tables, etc. to ToC
+    listof=entryprefix,     % add entry name to figures, tables, etc.
+    listof=nochaptergap,    % no chapter gap for figures, tables, etc.
+    bibliography=totoc,     % add bibliography to ToC but without a chapter number
+    parskip=half,            % half line spacing between paragraphs
+%    headings=openany
+]{scrbook}
+
+%\KOMAoptions{twoside=false}
+\include{preamble}                      % load preamble
+
+
+\begin{document}
+
+
+
+
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+\include{framework/titlepage}           % title page
+
+% Roman numbering
+\frontmatter
+\pagenumbering{Roman}
+
+\include{framework/abstract}            % Abstract
+\tableofcontents                        % Contents
+%\listoffigures                          % List of Figures
+%\listoftables                           % List of Tables
+\include{framework/abbreviations}       % Abbreviations
+
+% Content
+\mainmatter
+
+\include{content/SHiP}
+\include{content/Cosmics}
+\include{content/Analysis}
+\include{content/Discussion}
+\include{content/Outlook}
+
+% Appendices
+%\appendix
+%
+%\begin{appendices}
+%    \include{appendix/A_moreFigures}
+%\end{appendices}
+
+% Bibliography
+\begin{singlespace}
+    \printbibliography
+\end{singlespace}
+
+\include{content/code}
+
+% Declaration of Authorship (in German)
+\include{framework/declaration_of_authorship} 
+
+\end{document}

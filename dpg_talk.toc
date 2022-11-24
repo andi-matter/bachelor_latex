@@ -1,0 +1,5 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{SHiP Surround Background Tagger (SBT)}{3}{0}{1}
+\beamer@sectionintoc {2}{Liquid Scintillator SBT}{5}{0}{2}
+\beamer@sectionintoc {3}{Spatial resolution studies with a small-scale SBT cell prototype}{7}{0}{3}
+\beamer@sectionintoc {4}{Results}{14}{0}{4}
