@@ -1,0 +1,74 @@
+\chapter{Introduction}\markboth{Introduction}{}
+
+
+
+
+    Beginning in the 1960s, the \ac{SM} of particle physics has been developed, tested and confirmed by numerous experiments, some performed at accelerator facilities, around the world.
+	This culminated in the experimental discovery of the, in 1964 proposed \cite{CERN-HIGGS}, Higgs boson at the \ac{LHC} in 2012 \cite{CERN-LHC}, completing the search for the last missing component of the \ac{SM}.
+	Since then, no significant deviations from this \ac{SM} have been found in the available searches \cite{CERN-LHC}.
+	This of course does not mean that the \ac{SM} itself is a perfect model -
+	comparing with other observations, not necessarily from particle physics, but especially astrophysics and cosmology, it even seems likely that the \ac{SM} is an incomplete theory, as it has yet to explain a number of phenomena observed.
+	These, commonly dubbed the '\ac{BSM}' challenges, include the existence of neutrino mass and oscillations, the baryon asymmetry of the Universe, cosmological inflation and dark energy, and of course dark matter \cite{PHYSICS-CASE}.
+% 	Neutrino mass and oscillations - neutrinos with of a specific lepton flavour have been observed to obtain a different lepton family number at a later point in time, a phenomenon not covered by the SM and suggesting a non-zero neutrino mass (Super-Kamiokande observatory)
+% 	Baryon asymmetry of Universe - why do we observe more matter than antimatter in the current universe, when we assume that during the Big Bang the same amount of each was produced?
+% 	Cosmological inflation & Dark Energy - why did the Universe expand at an accelerated pace in its early stages? Why does it now?
+% 	Dark Matter - observations suggest that most matter in the Universe is not visible - what is it made of?
+	
+	Further experimentation to explore these areas can generally be separated in two types: The
+	'energy frontier' and the 'intensity frontier'. At the 'energy frontier', experiments are searching for hypothetical particles that have higher masses than so far possible to be created in collisions, meaning one would need higher collision energy to observe them.
+% 	\ac{LHC} and Future hadron colliders explore this sector
+	At the 'intensity frontier', the proposed hypothetical particles have low masses, extremely small interaction cross sections and large lifetimes. This could mean that, in order to observe them, we need to increase the number of opportunities for interactions where these particles are produced.
+	%There could also be 'hidden sector' HS particles - weakly interacting particles, that only indirectly interact with SM matter (e.g. Through gravity) but of no particular mass range
+	
+	The \ac{SHiP} experiment proposal is one such such 'intensity frontier' experiment.
+	It was proposed to both look for relatively light new particles which could potentially give new insights into the \ac{BSM} problems, and also to check \ac{SM} predictions that have yet to be verified by experiments \cite{SHIP-proposal,SHIP-technical}.
+%	,SHIP-technical}.
+	In the experiment, a large number of such particles shall be potentially produced by colliding high energy protons with a solid target in a beam-dump and tracking the decay products. An overview of the \ac{SHiP} experiment and its main components will be given in chapter \ref{ch:SHiP}.
+	This tracking necessitates a reliable and precise background suppression, passively by preventing unwanted particles from entering the decay volume, as well as actively, by identifying false positives. Simulations and theory suggest the main sources of background signals stem from neutrino and muon interactions in the detector material, which is why one of the main background taggers will act as one, the decay volume encompassing, muon detector \cite{SHIP-DESIGN-2019}. This \acf{SBT} is being developed by \ac{HU} Berlin\footnote{In collaboration with the Universities of Aachen, Freiburg, Mainz, Kiev and Naples, and Forschungszentrum Jülich.}. It will consist of smaller detector 'cells' \cite{SHIP-DESIGN-2019}. Each cell will be a \ac{LS} type detector, equipped with a \ac{WOM} that transports the scintillation light to an array of 40 \acsp{SiPM}. For active background suppression, it is necessary to understand the response of the muon detectors depending on the path an incident particle took through it. 
+	
+	This thesis' goal is to explore the position-dependent detector response of an \ac{SBT} cell-like prototype setup located at \ac{HU} Berlin, where cosmic muons are used to study the detector's behaviour. Using a set of two plastic scintillators, located above and beneath the prototype, to determine the position and angle at which muons crossed the box containing the \ac{LS}, data was taken and analysed for several muon-incidence positions. The study quantifies how well the position of a muon that crossed the prototype can be inferred only from the \ac{SiPM} array's response.
+
+ 
+
+
+\chapter{The Search for Hidden Particles Experiment}\markboth{The Search for Hidden Particles Experiment}{}
+\label{ch:SHiP}
+	
+	The \ac{SHiP} experiment, initially proposed in 2013, is planned to be a beam-dump experiment located at the \ac{SPS} accelerator at the \ac{CERN} near Geneva, Switzerland. It will operate at the intensity frontier, searching for  light long-lived exotic particles with masses below $\order{10} \SI[per-mode=symbol]{}{\giga\eVperc\squared}$ \cite{SHIP-proposal} by colliding protons from the \ac{SPS} on a fixed target of titanium-zirconium doped molybdenum alloy in a beam-dump. In this target, particles such as charmed and beauty mesons will be produced, which will then decay further inside the beam-dump target, where decay products will be detected. The target material was chosen to be able to absorb the high energy proton beam, as well as maximising the production of desired particles and absorbing unwanted ones such as kaons and pions  \cite{TARGET}.
+	Behind the target, a \SI{5}{\meter} long 'hadron stopper', a \SI{30}{\meter} long muon shield, as well as two main detector apparatuses make up the experiment complex (figure \ref{fig:SHIP-facility}).
+	The hadron stopper absorbs electromagnetic radiation as well as hadrons emerging from the target as a result from the proton collisions. The \ac{SND}, planned to look for light dark matter particles and neutrino interactions of all neutrino flavours, is followed by a \SI{50}{\meter} long decay volume, behind which the \ac{HS} decay spectrometer will attempt to reconstruct these decays' vertices. The whole facility will span a length of around \SI{120}{\meter} and will be located \SI{15}{\meter} under ground \cite{SHIP-DESIGN-2019}.
+	
+%	FIGURE SHiP facility
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{pictures/ship-facility.pdf}
+		\caption{Overview of the \ac{SHiP} experiment as it is planned. The \ac{SBT} which will envelop the \ac{HS} decay volume is not pictured. Taken from \cite{SHIP-DESIGN-2019}.}
+		\label{fig:SHIP-facility}
+	\end{figure}
+
+	\ac{SHiP} will operate as an intensity frontier experiment, meaning it will produce as many interactions as possible, hoping that a few of the rare \ac{BSM} interactions will occur. The detector has to have the ability to confidently detect and differentiate between all particles produced in the beam-dump and following decays. This necessitates a reliable and precise background suppression - passively by preventing unwanted particles from entering the decay volume, but also actively, by identifying false positives. Simulations and theory expect there to be three main sources of background signals: Neutrinos and muons scattering in the vicinity of the detector can produce particles, whose decay products could mimic the signals expected from the hidden particles \ac{SHiP} will be looking for \cite{SHIP-proposal}. To minimise the opportunities for this scattering, the decay vessel is evacuated. Additionally, muons entering the decay volume could randomly combine tracks, mimicking signal events as well.	
+	The \ac{SBT}, as the name suggests, will surround the \SI{50}{\meter} long decay volume, and aims to be capable of detecting charged particles, such as as muons, produced in the interactions in the decay volume. 
+	It will be integrated into the wall structure of the decay volume itself, being made up of $\order{2000}$ 'cells' of detectors, each with a surface area of $0.8 \times (1.2 - 1.5) \SI{}{\square\meter}$. The decay volume, as seen in figure \ref{fig:decay-volume}, will be a frustum shape, meaning the \ac{SBT} cell size has to 'grow' with rising distance from the \ac{SND}.
+	
+%	FIGURE decay volume stucture
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{pictures/decay_volume.pdf}
+		\caption{3D model of the decay volume which will house the \ac{SBT}. Image taken from \cite{MIANO}.}
+		\label{fig:decay-volume}
+	\end{figure}
+	
+	Each \ac{SBT} cell will be filled with liquid scintillator. The main design requirements for the cells are full coverage of the area surrounding the decay volume, as well as a high detection efficiency.
+	The scintillator was decided to be liquid as a fluid guarantees the filling of the entire available space in an \ac{SBT} cell, while also facilitating controllable light production characteristics, as the exact composition and mixing of fluids can be adjusted.
+	The scintillation light produced by particle interactions will be transported via a tube-shaped \acl{WOM} inside the detector cell, a light-transportation concept first introduced as a possible upgrade for the IceCube experiment \cite{ICECUBE}, in which it will be directed toward a \ac{PCB}, where it will be detected by \acsp{SiPM}. 
+	The current design of the \ac{SBT} cells plans for two optical modules per cell, however this and details about the composition of the \ac{LS} material and tube characteristics are still under development.
+	As this thesis will discuss data taken from an experiment located at \ac{HU} Berlin, which has a similar setup and working principle to the \ac{SBT} cells planned to be used in \ac{SHiP}, details regarding the different parts of a cell will be presented in the next section.
+    
+	
+	
+
+
+
+%\section{Surround Background Tagger}
