@@ -1,4 +1,4 @@
-Tex files and picture of Bachelor Thesis 
+Tex files and pictures of Bachelor Thesis 
 "Study of the position-dependent detector response of a liquidscintillator detector instrumented with WOMs and SiPMs using cosmic muons"
 
 ---
